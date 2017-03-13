@@ -43,43 +43,61 @@ type
     private
       Text: TLabel;
     public
-      constructor Create(Cont: TWinControl; CWidth: integer; var Pos: integer; Str: string);
+      constructor Create(Cont: TWinControl; var Pos: integer; Str: string);
   end;
 
   TnoCGP_Subheader = class(TNoteObject)
     private
       Text: TLabel;
     public
-      constructor Create(Cont: TWinControl; CWidth: integer; var Pos: integer; Str: string);
+      constructor Create(Cont: TWinControl; var Pos: integer; Str: string);
   end;
 
   TnoBasic_Textbox = class(TNoteObject)
     private
       Text: TMemo;
     public
-      constructor Create(Cont: TWinControl; CWidth: integer; var Pos: integer; Str: string);
+      constructor Create(Cont: TWinControl; var Pos: integer; Str: string);
+  end;
+
+  TnoBasic_Image = class(TNoteObject)
+    private
+      Image: TImage;
+    public
+      constructor Create(Cont: TWinControl; var Pos: integer; Path: string);
   end;
 
 
 implementation
 
 uses
-  Dialogs;
+  Dialogs, uNotebook;
 
 destructor TNoteObject.Destroy;
 begin
   Panel.Destroy;
 end;
 
-constructor TnoBasic_Textbox.Create(Cont: TWinControl; CWidth: integer; var Pos: integer; Str: string);
+constructor TnoBasic_Image.Create(Cont: TWinControl; var Pos: integer; Path: string);
+begin
+  Container:= Cont;
+  Panel:= TPanel.Create(nil);
+  // incomplete
+  {
+    Need to find a way of keeping ratio between height and width of image
+    on scaling.
+  }
+end;
+
+constructor TnoBasic_Textbox.Create(Cont: TWinControl; var Pos: integer; Str: string);
 begin
   Container:= Cont;
   Panel:= TPanel.Create(nil);
   with Panel do
     begin
       Parent:= Cont;
-      Width:= CWidth;
-      Height:= 90; // VARIES BETWEEN OBJECTS
+      Width:= notebookCurrentWidth-48;
+      Height:= 90;
       Left:= 28;
       Top:= Pos;
       BevelWidth:= 0;
@@ -92,20 +110,22 @@ begin
       Text:= Str;
       BorderStyle:= bsNone;
       WordWrap:= True;
-      Width:= CWidth;
-      Height:= Panel.Height;
+      Width:= notebookCurrentWidth;
+      //Height:= Panel.Height;
+      Height:=  Lines.Count * 16;
+      Panel.Height:= Height;
     end;
   Pos:= Pos+Panel.Height+OBJECT_BUFFER;
 end;
 
-constructor TnoCGP_Header.Create(Cont: TWinControl; CWidth: integer; var Pos: integer; Str: string);
+constructor TnoCGP_Header.Create(Cont: TWinControl; var Pos: integer; Str: string);
 begin
   Container:= Cont;
   Panel:= TPanel.Create(nil);
   with Panel do
     begin
       Parent:= Cont;
-      Width:= CWidth;
+      Width:= notebookCurrentWidth-16;
       Height:= 40; // VARIES BETWEEN OBJECTS
       Left:= 8;
       Top:= Pos;
@@ -129,14 +149,14 @@ begin
   Pos:= Pos+Panel.Height+OBJECT_BUFFER;
 end;
 
-constructor TnoCGP_Subheader.Create(Cont: TWinControl; CWidth: integer; var Pos: integer; Str: string);
+constructor TnoCGP_Subheader.Create(Cont: TWinControl; var Pos: integer; Str: string);
 begin
   Container:= Cont;
   Panel:= TPanel.Create(nil);
   with Panel do
     begin
       Parent:= Cont;
-      Width:= CWidth;
+      Width:= notebookCurrentWidth div 3;
       Height:= 28; // VARIES BETWEEN OBJECTS
       Left:= 24;
       Top:= Pos;
