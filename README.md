@@ -1,4 +1,4 @@
-# Note-Organiser
+### Note-Organiser
 
 I intend to create a sort of organiser for the desktop.
 Mainly focused towards students to create and share notes, and a way to represent a timeline of
