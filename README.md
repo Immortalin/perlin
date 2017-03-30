@@ -24,3 +24,5 @@ with TypeList do
     parameterPanel.Caption:= Items[ItemIndex];
   end; 
 ```
+
+This is quite a nuisance as when note objects are added, all instances of these loops must be amended. 
