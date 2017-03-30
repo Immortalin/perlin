@@ -16,11 +16,11 @@ Some code is intended to be updated in the future; There are multiple uses of re
 
 ```pascal
 TypeList:= Sender as TListBox;
-  with TypeList do
-    begin
-      for StrObj:= noCGP_Header to noBasic_TextBox do
-        if StrNoteObjects[StrObj] = Items[ItemIndex] then
-          ParameterOptionsPanel.Setup(StrObj);
-      parameterPanel.Caption:= Items[ItemIndex];
-    end; 
+with TypeList do
+  begin
+    for StrObj:= noCGP_Header to noBasic_TextBox do
+      if StrNoteObjects[StrObj] = Items[ItemIndex] then
+        ParameterOptionsPanel.Setup(StrObj);
+    parameterPanel.Caption:= Items[ItemIndex];
+  end; 
 ```
