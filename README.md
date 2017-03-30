@@ -1,3 +1,5 @@
+gem "minima"
+theme: minima
 ### Perlin - Latest Release
 #### Released 30/03/2017
 -----
