@@ -12,7 +12,7 @@ if not (tempStr = '') the
     NoteObject[GetNoteCount]:= TnoCGP_Header.Create(GetContainer,Bottom,tempStr);
 ```
 
-Some code is intended to be updated in the future; There are multiple uses of recursion that uses defined bounds of the TNoteObjects identifiers, as can be seen is this example from the _uFrmDialogPage_ unit.
+Some code is intended to be updated in the future; There are multiple uses of recursion that uses defined bounds of the _TNoteObjects_ identifiers, as can be seen is this example from the _uFrmDialogPage_ unit.
 
 ```pascal
 TypeList:= Sender as TListBox;
