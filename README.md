@@ -1,14 +1,4 @@
-### Perlin
-Test
-## Test
-# Test
-I intend to create a sort of organiser for the desktop.
-Mainly focused towards students to create and share notes, and a way to represent a timeline of
-information that has been accumulated in the course.
-
-Run the .EXE file in a folder with the /data/ directory to see the current progress.
-
-Currently I am the only person actively working on the project, if you are interested in
-helping or just to ask a few questions I would be elated to hear from you.
-
-I am best to contact through e-mail: ldhmachin@gmail.com
+# Perlin
+### Perlin - Latest Release
+#### Released 30/03/2017
+Lorem ipsum dolor sit amet, vivamus placerat lorem taciti dolor mi, nulla urna nec, nibh eros ut arcu aliquam a, id consequat in integer mauris sit placerat. Orci diam consectetuer ut tellus pulvinar phasellus, et quis accumsan quam dolor sed. Non mattis nisl tenetur sed quam, vel porta sit maecenas augue tempus. Porta potenti, cursus velit, fermentum sed fermentum non mauris mi sit. In dui. Non duis consectetur ad duis, risus donec tellus, mauris vitae vehicula taciti euismod praesent fermentum, mauris maecenas, sed id. In luctus, dictum lorem turpis in sit mi, vitae duis per, ipsum nulla eu justo eu dictum, erat ad.
