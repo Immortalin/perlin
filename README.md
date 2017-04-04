@@ -4,7 +4,7 @@ Perlin is a desktop-application that can view and compile notes in a modular for
 ### Amendments to be added
 
 * highlight function
-*  _key note_ note object
+* keyphrase note object in _CGP style_
 * search functionality
 
 ----
