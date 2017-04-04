@@ -2,9 +2,11 @@
 Perlin is a desktop-application that can view and compile notes in a modular form.
 ----
 ### Amendments to be added
+
 * highlight function
 *  _key note_ note object
 * search functionality
+
 ----
 ### Perlin - Latest Release
 #### Released 30/03/2017
