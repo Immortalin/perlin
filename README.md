@@ -2,7 +2,9 @@
 
 Perlin is a desktop-application that can view and compile notes in a modular form.
 
-![Screenshot of Perlin](http://github.com/ldhmachin/Perlin/blob/master/screenshots/1.PNG)
+![Screenshot of Perlin](https://github.com/ldhmachin/Perlin/blob/master/screenshots/1.PNG)
+
+This is the current stage of development with Perlin.
 ----
 ### Amendments to be added
 
