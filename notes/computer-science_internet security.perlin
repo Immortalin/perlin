@@ -1,0 +1,60 @@
+﻿Internet Security
+Risks of transferring data and ways they can be combatted.
+CGP Header
+Internet Security
+↵
+CGP Textbox
+Risks between sending confidential information: Data being intercepted as it passes through different internet links; Data getting lost or not being able to reach its destination node; Data being corrupted during transmission and forwarding.
+↵
+CGP Subheader
+Firewall
+↵
+Basic Textbox
+The entrance to a network can be protected in the same way. A firewall is either software or hardware that controls access to and from a network. Numbered doors called ports are opened so that only certain traffic is allowed to pass through.
+↵
+CGP Subheader
+Packet Filtering
+↵
+Basic Textbox
+Packets of data are inspected by the firewall to check which port they are attempted to access. Different network protocols use different port numbers for example, HTTP traffic, used to transfer web page data, uses 80 or 8080. If this traffic is to be allowed, the port must be opened for the duration of the connection, otherwise the firewall will automatically reject it.
+↵
+CGP Subheader
+Blocking Communications
+↵
+Basic Image
+notes/images/blocking-communications.png
+430
+240
+↵
+CGP Subheader
+Stateful Inspection
+↵
+Basic Textbox
+Rather than relying on port numbers and IP addresses to determine passage, stateful inspection examines the payload of a packet before allowing access and remembers actions for future decisions. When data are expected from a destination they are allowed through as the details of the 'conversation' are maintained by the firewall.
+↵
+CGP Subheader
+Proxy Servers
+↵
+Basic Textbox
+A proxy server makes a web request on behalf of your own computer, hiding the true request IP addresses from the recipient.
+↵
+Basic Image
+notes/images/proxy-servers.png
+400
+150
+↵
+Basic Textbox
+A proxy server: Enables anonymous surfing; Can be used to filter undesirable online content; Logs user data with their requests; Provides a cache of previously visited sites to speed access; If the website has been updated since the cached version, the web server will forward the updated version to the proxy as http protocol handles this.
+↵
+CGP Subheader
+Encryption
+↵
+Basic Textbox
+The act of encoding a plaintext message so that it cannot be deciphered unless you have a numerical key to decrypt it.
+↵
+CGP Keyphrase
+If the key can be intercepted, the encryption process is rendered useless
+↵
+Basic Textbox
+There are multiple ways to encrypt and distribute keys, though some methods have proven to be insecure.
+↵

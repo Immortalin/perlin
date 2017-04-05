@@ -1,0 +1,75 @@
+﻿Continuous Random Variables
+Continuous random variables are used to model continuous data.
+CGP Header
+Continuous Random Variables
+↵
+CGP Subheader
+Probability Density Function
+↵
+Basic Textbox
+The p.d.f., f(x), of the continuous random variable, X, has the following properties:
+↵
+Basic Textbox
+(i) f(x) is always larger or equal to 0
+↵
+Basic Textbox
+(ii) the total area under f(x) is 1
+↵
+Basic Textbox
+(iii) the probability that X takes any specific value is zero. i.e. P(X=x) = 0
+↵
+Basic Image
+notes/images/gaussian-curve.png
+400
+200
+↵
+CGP Subheader
+Expectation and Variance
+↵
+Basic Textbox
+The mean, or expected value, or expectation, of X is given by
+↵
+Basic Image
+notes/images/continuous-var-mean.png
+189
+59
+↵
+Basic Textbox
+The variance is given by
+↵
+Basic Image
+notes/images/continuous-var-variance.png
+380
+59
+↵
+Basic Textbox
+These expressions are similar to those for discrete random variables.
+↵
+CGP Subheader
+Median and Mode
+↵
+Basic Textbox
+For continuous random variables, the median is the value that seperates the area under the graph of the p.d.f. f(x) into two equal parts, each of area 0.5. The mode is the value at which the maximum value of f(x) occurs.
+↵
+Basic Textbox
+The median is the solution of
+↵
+Basic Image
+notes/images/median.png
+123
+59
+↵
+Basic Textbox
+The mode is the value of x which maximises f(x). Depending on the shape of the graph of the function f(x), this may or may not be a point at which f'(x)=0.
+↵
+CGP Subheader
+The Rectangular distribution
+↵
+Basic Textbox
+The Rectangular distibution is also called the continuous uniform distribution.
+↵
+Basic Image
+notes/images/rectangular-dist-properties.png
+411
+195
+↵

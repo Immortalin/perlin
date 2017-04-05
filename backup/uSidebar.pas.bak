@@ -5,7 +5,8 @@ unit uSidebar;
 interface
 
 uses
-  Classes, SysUtils, Forms, ExtCtrls, Controls, Graphics, StdCtrls;
+  Classes, SysUtils, Forms, ExtCtrls, Controls, Graphics, StdCtrls,
+  lclintf;
 
 const
   BUTTON_MAX = 16;
@@ -19,16 +20,18 @@ type
 
   TSidebarButton = class
     private
-      LblText: string;
+      LblText, linkAddress: string;
       Circle: TImage;
       Panel: TPanel;
       lbl: TLabel;
       procedure MouseEnter(Sender: TObject);
       procedure MouseLeave(Sender: TObject);
+      procedure MouseClick(Sender: TObject);
     public
       constructor CreateHeader(Text: string; Pos: integer; Container: TWinControl);
       constructor CreateTag(Text: string; TagClr: TTagColor; Pos: integer; Container: TWinControl);
       constructor CreateNotebook(Text: string; Pos: integer; Container: TWinControl);
+      constructor CreateLink(Text, Link: string; Pos: integer; Container: TWinControl);
   end;
 
   TSidebarButtons = class
@@ -40,6 +43,7 @@ type
       procedure AddHeader(Text: string);
       procedure AddTag(Text: string; TagClr: TTagColor);
       procedure AddNotebook(Text: string);
+      procedure AddLink(Text, Link: string);
       constructor Create(Container: TWinControl);
   end;
 
@@ -48,6 +52,7 @@ type
       ParentContainer: TWinControl;
       Panel: TPanel;
       VertLine, HorzLine: TShape;
+      CornerImg: TImage;
     public
       Buttons: TSidebarButtons;
       procedure FitToContainer;
@@ -81,7 +86,7 @@ begin
   with Panel do
     begin
       Parent:= Container;
-      Height:= 84;
+      Height:= 85;
       Width:= Container.Width-SIDEBAR_WIDTH;
       Left:= SIDEBAR_WIDTH;
       BevelWidth:= 0;
@@ -91,7 +96,7 @@ begin
     begin
       Parent:= Panel;
       Width:= 91;
-      Height:= 85;
+      Height:= 84;
       Left:= Panel.Width-Width;
       Picture.LoadFromFile('data/addImg.png');
     end;
@@ -104,6 +109,13 @@ begin
       Pen.Color:= clBorderGrey;
       Top:= Panel.Height-1;
     end;
+end;
+
+procedure TSidebarButton.MouseClick(Sender: TObject);
+begin
+  if not (linkAddress = '') then
+    OpenURL(linkAddress);
+
 end;
 
 procedure TSidebarButton.MouseEnter(Sender: TObject);
@@ -121,6 +133,7 @@ var
   i: integer;
   SpacedOutText: string;
 begin
+  linkAddress:= '';
   // text -> t e x t
   SpacedOutText:= '';
   for i:= 1 to length(Text) do
@@ -156,6 +169,7 @@ end;
 
 constructor TSidebarButton.CreateNotebook(Text: string; Pos: integer; Container: TWinControl);
 begin
+  linkAddress:= '';
   LblText:= Text;
   Panel:= TPanel.Create(nil);
   with Panel do
@@ -193,6 +207,7 @@ constructor TSidebarButton.CreateTag(Text: string; TagClr: TTagColor; Pos: integ
 var
   str: string;
 begin
+  linkAddress:= '';
   LblText:= Text;
   Panel:= TPanel.Create(nil);
   with Panel do
@@ -252,6 +267,43 @@ begin
     end;
 end;
 
+constructor TSidebarButton.CreateLink(Text, Link: string; Pos: integer; Container: TWinControl);
+begin
+  linkAddress:= Link;
+  LblText:= Text;
+  Panel:= TPanel.Create(nil);
+  with Panel do
+    begin
+      Parent:= Container;
+      Height:= 40;
+      Width:= SIDEBAR_WIDTH-16;
+      Left:= 8;
+      Top:= Pos;
+      BevelWidth:= 0;
+      BorderStyle:= bsNone;
+      BorderWidth:= 0;
+      Color:= clWhite;
+      Cursor:= crHandPoint;
+      OnMouseEnter:= @MouseEnter;
+      OnMouseLeave:= @MouseLeave;
+    end;
+  lbl:= TLabel.Create(nil);
+  with lbl do
+    begin
+      Parent:= Panel;
+      Font.Color:= clTextGrey;
+      Font.Size:= 9;
+      Caption:= Text;
+      Top:= (Panel.Height-Height) div 2;
+      Left:= 44;
+      Width:= Canvas.TextWidth(Text);
+      Cursor:= crHandPoint;
+      OnMouseEnter:= @MouseEnter;
+      OnMouseLeave:= @MouseLeave;
+      OnClick:= @MouseClick;
+    end;
+end;
+
 procedure TSidebarButtons.AddHeader(Text: string);
 begin
   inc(buttonCount);
@@ -263,6 +315,13 @@ procedure TSidebarButtons.AddNotebook(Text: string);
 begin
   inc(buttonCount);
   Buttons[buttonCount]:= TSidebarButton.CreateNotebook(Text, buttonsHeight, Panel);
+  buttonsHeight:= buttonsHeight+32;
+end;
+
+procedure TSidebarButtons.AddLink(Text, Link: string);
+begin
+  inc(buttonCount);
+  Buttons[buttonCount]:= TSidebarButton.CreateLink(Text, Link, buttonsHeight, Panel);
   buttonsHeight:= buttonsHeight+32;
 end;
 
@@ -326,6 +385,14 @@ begin
       Width:= SIDEBAR_WIDTH;
       Top:= 84;
       Pen.Color:= clBorderGrey;
+    end;
+  CornerImg:= TImage.Create(nil);
+  with CornerImg do
+    begin
+      Parent:= Panel;
+      Width:= SIDEBAR_WIDTH;
+      Height:= 84;
+      Picture.LoadFromFile('data/cornerImg.png');
     end;
   Buttons:= TSidebarButtons.Create(Panel);
 end;

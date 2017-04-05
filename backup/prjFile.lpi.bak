@@ -6,7 +6,7 @@
     <General>
       <SessionStorage Value="InProjectDir"/>
       <MainUnit Value="0"/>
-      <Title Value="prjFile"/>
+      <Title Value="Perlin"/>
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
       <Icon Value="0"/>
@@ -33,7 +33,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="3">
+    <Units Count="12">
       <Unit0>
         <Filename Value="prjFile.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -44,11 +44,70 @@
         <ComponentName Value="frmDash"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uFrmDash"/>
       </Unit1>
       <Unit2>
-        <Filename Value="uSidebar.pas"/>
+        <Filename Value="uGUI.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="uGUI"/>
       </Unit2>
+      <Unit3>
+        <Filename Value="unotebook.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uNotebook"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="ufrmdialog.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDialog"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uFrmDialog"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="udialog.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uDialog"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="ufrmdialognotebook.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDialogNotebook"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uFrmDialogNotebook"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="ufrmdialoglink.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDialogLink"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uFrmDialogLink"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="ufrmdialogpage.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDialogPage"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uFrmDialogPage"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="unoteobjects.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uNoteObjects"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="uloadnotes.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uLoadNotes"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="ucreatepagegui.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uCreatePageGUI"/>
+      </Unit11>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -59,6 +118,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
+      <OtherUnitFiles Value="units"/>
       <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Linking>
@@ -68,6 +128,9 @@
         </Win32>
       </Options>
     </Linking>
+    <Other>
+      <CompilerPath Value="$(CompPath)"/>
+    </Other>
   </CompilerOptions>
   <Debugging>
     <Exceptions Count="3">

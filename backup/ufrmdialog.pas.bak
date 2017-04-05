@@ -1,0 +1,46 @@
+unit uFrmDialog;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
+  uDialog;
+
+type
+
+  { TfrmDialog }
+
+  TfrmDialog = class(TForm)
+    procedure FormCreate(Sender: TObject);
+  private
+    { private declarations }
+  public
+    { public declarations }
+  end;
+
+var
+  frmDialog: TfrmDialog;
+  CreateDialog: TCreateDialog;
+
+implementation
+
+uses
+  uFrmDash;
+
+{$R *.lfm}
+
+{ TfrmDialog }
+
+procedure TfrmDialog.FormCreate(Sender: TObject);
+begin
+  with frmDialog do
+    begin
+      Caption:= frmDash.Caption;
+    end;
+  CreateDialog:= TCreateDialog.Create(frmDialog);
+end;
+
+end.
+

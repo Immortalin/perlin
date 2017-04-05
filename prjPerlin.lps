@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="9"/>
+    <BuildModes Active="Default"/>
+    <Units Count="12">
+      <Unit0>
+        <Filename Value="prjPerlin.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="prjPerlin"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="0"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="18" Y="1"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="uFrmDash.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDash"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uFrmDash"/>
+        <UsageCount Value="20"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="uGUI.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uGUI"/>
+        <UsageCount Value="20"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="unotebook.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uNotebook"/>
+        <UsageCount Value="20"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="ufrmdialog.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDialog"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uFrmDialog"/>
+        <UsageCount Value="20"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="udialog.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uDialog"/>
+        <UsageCount Value="20"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="ufrmdialognotebook.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDialogNotebook"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uFrmDialogNotebook"/>
+        <UsageCount Value="20"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="ufrmdialoglink.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDialogLink"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uFrmDialogLink"/>
+        <UsageCount Value="20"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="ufrmdialogpage.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDialogPage"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uFrmDialogPage"/>
+        <UsageCount Value="20"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="unoteobjects.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uNoteObjects"/>
+        <UsageCount Value="20"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="uloadnotes.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uLoadNotes"/>
+        <UsageCount Value="20"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="ucreatepagegui.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uCreatePageGUI"/>
+        <UsageCount Value="20"/>
+      </Unit11>
+    </Units>
+    <General>
+      <ActiveWindowIndexAtStart Value="0"/>
+    </General>
+    <JumpHistory Count="0" HistoryIndex="-1"/>
+  </ProjectSession>
+  <EditorMacros Count="0"/>
+</CONFIG>

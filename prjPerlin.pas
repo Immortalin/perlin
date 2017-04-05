@@ -1,0 +1,26 @@
+program prjPerlin;
+
+{$mode objfpc}{$H+}
+
+uses
+  {$IFDEF UNIX}{$IFDEF UseCThreads}
+  cthreads,
+  {$ENDIF}{$ENDIF}
+  Interfaces, // this includes the LCL widgetset
+  Forms, uFrmDash, uGUI, uNotebook, uFrmDialogNotebook, uFrmDialogLink,
+  uFrmDialogPage, uNoteObjects, uLoadNotes, uCreatePageGUI
+  { you can add units after this };
+
+{$R *.res}
+
+begin
+  Application.Title:='Perlin';
+  RequireDerivedFormResource:=True;
+  Application.Initialize;
+  Application.CreateForm(TfrmDash, frmDash);
+  Application.CreateForm(TfrmDialogNotebook, frmDialogNotebook);
+  Application.CreateForm(TfrmDialogLink, frmDialogLink);
+  Application.CreateForm(TfrmDialogPage, frmDialogPage);
+  Application.Run;
+end.
+

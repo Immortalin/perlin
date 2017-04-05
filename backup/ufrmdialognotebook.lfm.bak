@@ -1,0 +1,10 @@
+object frmDialogNotebook: TfrmDialogNotebook
+  Left = 1538
+  Height = 240
+  Top = 36
+  Width = 318
+  Caption = 'frmDialogNotebook'
+  OnCreate = FormCreate
+  OnResize = FormResize
+  LCLVersion = '1.2.2.0'
+end
