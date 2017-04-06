@@ -8,10 +8,11 @@ How to download from GitHub
 -----
 1. Click 'Clone or download' from the GitHub page.
 2. You can delete all files except: 
+
 * Perlin.exe
 * Perlin.ico
 * /data/
-* /notes/
+* /notes/ 
 3. You can create a shortcut to the Perlin.exe file on your desktop.
 4. Run!
 
