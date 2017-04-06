@@ -37,7 +37,6 @@
       <Unit0>
         <Filename Value="prjPerlin.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="prjPerlin"/>
       </Unit0>
       <Unit1>
         <Filename Value="uFrmDash.pas"/>
@@ -45,12 +44,10 @@
         <ComponentName Value="frmDash"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="uFrmDash"/>
       </Unit1>
       <Unit2>
         <Filename Value="uGUI.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="uGUI"/>
       </Unit2>
       <Unit3>
         <Filename Value="unotebook.pas"/>
@@ -129,9 +126,6 @@
         </Win32>
       </Options>
     </Linking>
-    <Other>
-      <CompilerPath Value="$(CompPath)"/>
-    </Other>
   </CompilerOptions>
   <Debugging>
     <Exceptions Count="3">

@@ -4,16 +4,12 @@
     <PathDelim Value="\"/>
     <Version Value="9"/>
     <BuildModes Active="Default"/>
-    <Units Count="12">
+    <Units Count="13">
       <Unit0>
         <Filename Value="prjPerlin.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="prjPerlin"/>
         <IsVisibleTab Value="True"/>
-        <EditorIndex Value="0"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="18" Y="1"/>
+        <CursorPos Y="25"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -23,13 +19,11 @@
         <ComponentName Value="frmDash"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="uFrmDash"/>
         <UsageCount Value="20"/>
       </Unit1>
       <Unit2>
         <Filename Value="uGUI.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="uGUI"/>
         <UsageCount Value="20"/>
       </Unit2>
       <Unit3>
@@ -98,11 +92,30 @@
         <UnitName Value="uCreatePageGUI"/>
         <UsageCount Value="20"/>
       </Unit11>
+      <Unit12>
+        <Filename Value="units\ufrmdialognotebook.pas"/>
+        <UnitName Value="uFrmDialogNotebook"/>
+        <EditorIndex Value="1"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit12>
     </Units>
-    <General>
-      <ActiveWindowIndexAtStart Value="0"/>
-    </General>
-    <JumpHistory Count="0" HistoryIndex="-1"/>
+    <JumpHistory Count="1">
+      <Position1>
+        <Filename Value="prjPerlin.pas"/>
+        <Caret Line="2" Column="67"/>
+      </Position1>
+    </JumpHistory>
   </ProjectSession>
-  <EditorMacros Count="0"/>
+  <Debugging>
+    <BreakPoints Count="1">
+      <Item1>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="prjPerlin.pas"/>
+        <Line Value="25"/>
+      </Item1>
+    </BreakPoints>
+  </Debugging>
 </CONFIG>
