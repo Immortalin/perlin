@@ -20,6 +20,23 @@ As we are early in development, this list is soon to be very extensive with _man
 
 Slack team
 -----
-If you want to contribute, email me at ldhmachin@gmail.com and I will add you to the Slack team
-The project team is very welcoming to all experience levels, whether you are beginning to program or a seasoned engineer.
+If you want to contribute, email me at ldhmachin@gmail.com and I will add you to the Slack team. The project team is very welcoming to all experience levels, whether you are beginning to program or a seasoned engineer.
+
+Planned amendments
+-----
+**GUI:**
+* Nightmode (alternate color constants)
+* Notifications 
+**Functionality:**
+* Record date/time/frequency of opening a note
+* Order by most/least viewed
+* Order by last opened
+**Note-Objects:**
+* List object
+* Spider diagram
+* Box plot
+* Graph
+* Trigonometric graphs (pre-defined)
+
+
 
