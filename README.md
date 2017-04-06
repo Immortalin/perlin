@@ -1,4 +1,3 @@
-[latest_version]: 1.1.0
 Perlin
 =====
 What is Perlin?
@@ -7,7 +6,7 @@ Perlin is a desktop-application that can view and compile notes in a modular for
 
 ![Screenshot](https://raw.githubusercontent.com/ldhmachin/Perlin/master/documentation/screenshots/current.PNG)
 
-Latest Release [latest_version]
+Latest Release (1.1.0)
 -----
 The latest release supports dynamic creation of note objects. Currently, the note objects that Perlin offers are as follows:
 * CGP-Style Header
