@@ -8,7 +8,6 @@ How to download from GitHub
 -----
 1. Click 'Clone or download' from the GitHub page.
 2. You can delete all files except: 
-
 * Perlin.exe
 * Perlin.ico
 * /data/
