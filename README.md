@@ -27,10 +27,12 @@ Planned amendments
 **GUI:**
 * Nightmode (alternate color constants)
 * Notifications 
+
 **Functionality:**
 * Record date/time/frequency of opening a note
 * Order by most/least viewed
 * Order by last opened
+
 **Note-Objects:**
 * List object
 * Spider diagram
