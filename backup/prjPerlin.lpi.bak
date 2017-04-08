@@ -35,7 +35,7 @@
     </RequiredPackages>
     <Units Count="12">
       <Unit0>
-        <Filename Value="prjFile.lpr"/>
+        <Filename Value="prjPerlin.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit0>
       <Unit1>
@@ -44,12 +44,10 @@
         <ComponentName Value="frmDash"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="uFrmDash"/>
       </Unit1>
       <Unit2>
         <Filename Value="uGUI.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="uGUI"/>
       </Unit2>
       <Unit3>
         <Filename Value="unotebook.pas"/>
@@ -114,7 +112,7 @@
     <Version Value="11"/>
     <PathDelim Value="\"/>
     <Target>
-      <Filename Value="prjFile"/>
+      <Filename Value="Perlin"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
@@ -128,9 +126,6 @@
         </Win32>
       </Options>
     </Linking>
-    <Other>
-      <CompilerPath Value="$(CompPath)"/>
-    </Other>
   </CompilerOptions>
   <Debugging>
     <Exceptions Count="3">
