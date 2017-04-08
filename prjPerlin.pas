@@ -8,7 +8,7 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, uFrmDash, uGUI, uNotebook, uFrmDialogNotebook, uFrmDialogLink,
-  uFrmDialogPage, uNoteObjects, uLoadNotes, uCreatePageGUI
+  uFrmDialogPage, uNoteObjects, uLoadNotes, uCreatePageGUI, uPageFromTXT
   { you can add units after this };
 
 {$R *.res}
