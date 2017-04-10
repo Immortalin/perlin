@@ -25,7 +25,7 @@ type
   end;
 
 const
-  MAX_NOTEBOOKS = 8;
+  MAX_NOTEBOOKS = 16;
 
 type
   TNotebookRecord = record
@@ -44,7 +44,7 @@ var
   notebookScrollbar: TScrollBar;
   debugLbl: TLabel;
   notebookCount: integer;
-  notebooks: array[1..8] of TNotebookRecord;
+  notebooks: array[1..MAX_NOTEBOOKS] of TNotebookRecord;
 
 implementation
 
@@ -85,7 +85,7 @@ begin
       Caption:= 'Perlin';
       Width:= 1024;
       Height:= 640;
-      Color:= clWhite;
+      Color:= clDefault;
     end;
   notebookPanel:= TPanel.Create(frmDash);
   with notebookPanel do
@@ -93,9 +93,10 @@ begin
       Parent:= frmDash;
       Width:= frmDash.Width-(SIDEBAR_WIDTH+PAGEBAR_WIDTH);
       Height:= frmDash.Height-TOPBAR_HEIGHT;
-      Left:= SIDEBAR_WIDTH+PAGEBAR_WIDTH-1;
-      Top:= TOPBAR_HEIGHT-1;
+      Left:= SIDEBAR_WIDTH+PAGEBAR_WIDTH;
+      Top:= TOPBAR_HEIGHT;
       BevelWidth:= 0;
+      Visible:= False;
       Color:= clDefault;
     end;
   notebookScrollbar:= TScrollBar.Create(notebookPanel);
@@ -113,19 +114,12 @@ begin
   topbar:= TTopbar.Create(frmDash);
   sidebar:= TSidebar.Create(frmDash);
   pagebar:= TPagebar.Create(frmDash);
+  pagebar.Panel.Hide;
   with sidebar.Buttons do
     begin
       AddHeader('Notebooks');
       AddHeader('Links');
     end;
-  {with pagebar do
-    begin
-      AddPage(tcPink,'Ch. 3.1 Complex Numbers','To calculate the polar form you must find the angle of the point above the x-axis, and distance...');
-      AddPage(tcLightBlue,'Functional Programming','With programming languages like Haskell and R, manipulating data works quite differently...');
-      AddPage(tcGreen,'Ch. 2 Expectation Algebra','If, in addition, the variables X and Y are independent then Var(aX±bY) = a²Var(X) + b²Var(Y)...');
-      AddPage(tcOrange,'Example Header','Lorem ipsum dolor sit amet, nec ferri denique posidonium in, inimicus maiestatis nec eu, lorem dicam...');
-      AddPage(tcLightBlue,'D Type Flip-flops','The name Data Latch refers to a D Type flip-flop that is level triggered, as the data (1 or 0) appearing...');
-    end;}
   debugLbl:= TLabel.Create(nil);
   with debugLbl do
     begin

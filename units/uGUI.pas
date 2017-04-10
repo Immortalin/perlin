@@ -250,9 +250,12 @@ begin
     if notebooks[i].Name = NotebookName then
       notebookID:= i;
   with notebooks[notebookID].Notebook do
-    for i:= 1 to GetPageCount do
-      if HeaderText.Caption = GetPageName(i) then
-        ShowPage(i);
+    begin
+    //if notebooks[notebookID].Notebook.Panel.Visible then ShowMessage(NotebookName);
+      for i:= 1 to GetPageCount do
+        if HeaderText.Caption = GetPageName(i) then
+          ShowPage(i);
+    end;
   notebookScrollbar.Position:= 1;
   //
 end;
@@ -478,6 +481,7 @@ begin
   with Panel do
     begin
       Parent:= ParentContainer;
+      Color:= clWhite;
       Height:= TOPBAR_HEIGHT;
       Width:= ParentContainer.Width-SIDEBAR_WIDTH;
       Left:= SIDEBAR_WIDTH;
@@ -592,9 +596,10 @@ begin
       if notebooks[i].Name = lbl.Caption then
         begin
           notebooks[i].Notebook.Show;
+          notebookPanel.Show;
+          pagebar.Panel.Show;
           pagebar.Clear;
           LoadAllPreviews(notebooks[i].ID);
-
         end
       else
         notebooks[i].Notebook.Hide;

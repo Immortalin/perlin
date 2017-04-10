@@ -116,6 +116,7 @@ begin
       Page[k].Hide
     else
       Page[k].Show;
+
 end;
 
 function TPage.GetName: string;
@@ -151,16 +152,9 @@ begin
       Width:= Container.Width;
       Height:= Container.Height;
       BevelWidth:= 0;
-      {case random(4) of //debug
-      0: Color:= clRed;
-      1: Color:= clYellow;
-      2: Color:= clGreen;
-      3: Color:= clBlue;
-      end;}
       Color:= clWhite;
       Visible:= False;
     end;
-  //notebookCurrentWidth:= Panel.Width;
 end;
 
 procedure TNotebook.Hide;
@@ -178,20 +172,17 @@ begin
   PageCount:= 0;
   Name:= Text;
   Tag:= Clr;
-  ParentContainer:= notebookPanel;
+  ParentContainer:= Container;
   Panel:= TPanel.Create(nil);
   with Panel do
     begin
       Parent:= Container;
       Width:= ParentContainer.Width-SCROLLBAR_WIDTH;
       Height:= ParentContainer.Height;
-      Visible:= True;
       BevelWidth:= 0;
       Color:= clDefault;
+      Visible:= False;
     end;
-  // DEBUG
-  //inc(PageCount);
-  //Page[PageCount]:= TPage.Create(Panel);
 end;
 
 end.
