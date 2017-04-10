@@ -14,8 +14,8 @@ uses
 {$R *.res}
 
 begin
-  Application.Title:='Perlin';
-  RequireDerivedFormResource:=True;
+  Application.Title:= 'Perlin';
+  RequireDerivedFormResource:= True;
   Application.Initialize;
   Application.CreateForm(TfrmDash, frmDash);
   Application.CreateForm(TfrmDialogNotebook, frmDialogNotebook);
