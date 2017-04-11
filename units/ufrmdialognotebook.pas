@@ -2,6 +2,24 @@ unit uFrmDialogNotebook;
 
 {$mode objfpc}{$H+}
 
+
+{
+Change such that the user selects a style, such as Basic,
+and then gets the option of selecting headers, textboxes etc.
+
+Perhaps encapsulate them so multiple styles can be used in one
+page. Or have an option of default style vs. selecting each style.
+
+Possible, use a menu to organise the objects like
+CGP
+> Header
+> Text
+Basic
+> Header
+> Text
+> Image
+}
+
 interface
 
 uses
