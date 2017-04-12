@@ -5,7 +5,7 @@ unit uLoadNotes;
 interface
 
 uses
-  Classes, SysUtils, uNoteObjects, uGUI, uNotebook, uFrmDash;
+  Classes, SysUtils, StrUtils, uNoteObjects, uGUI, uNotebook, uFrmDash;
 
 procedure LoadNotebooks(loadContent: boolean);
 procedure LoadPages(BookID: integer);
@@ -37,37 +37,96 @@ end;
 procedure LoadNotes(BookID, PageID: integer);
 var
   txt: textfile;
-  tempStr: string;
-  tempAnsiStr: ansistring;
-  tempInt1,tempInt2: integer;
-  pageName, pageDesc: string;
-  tempNoteObj: TNoteObjects;
+  line: ansistring;
+  tempPath: string;
+  tempWidth,tempHeight: integer;
+  pageName, pageDesc, pageStyle: string;
+  lineObject: TNoteObjects;
 begin
   AssignFile(txt,concat('notes/',notebooks[BookID].Notebook.GetName,'_',notebooks[BookID].Notebook.Page[PageID].GetName,'.perlin'));
   Reset(txt);
   readln(txt,pageName);
   readln(txt,pageDesc);
+  readln(txt,pageStyle);
   while not EOF(txt) do
     begin
-      readln(txt,tempStr); // note object as string (name)
-      tempNoteObj:= StrToNote(tempStr);
       notebooks[BookID].Notebook.Page[PageID].IncNotes;
-      case tempNoteObj of
-        noCGP_Header:
+      readln(txt,line); // load the line
+      // check subheader then header
+      if LeftStr(line,length(SUBHEADER_PREFIX)) = SUBHEADER_PREFIX then
+        lineObject:= noSubheader
+      else if LeftStr(line,length(HEADER_PREFIX)) = HEADER_PREFIX then
+        lineObject:= noHeader
+      else if LeftStr(line,length(KEYPHRASE_PREFIX)) = KEYPHRASE_PREFIX then
+        lineObject:= noKeyphrase
+      else if LeftStr(line,length(IMAGE_PREFIX)) = IMAGE_PREFIX then
+        lineObject:= noImage
+      else
+        lineObject:= noText;
+      case lineObject of
+        noHeader:
+          begin
+            line:= RightStr(line,length(line)-length(HEADER_PREFIX));
+            with notebooks[BookID].Notebook.Page[PageID] do
+              case StrToStyle(pageStyle) of
+                nsCGP: NoteObject[GetNoteCount]:= TnoCGP_Header.Create(GetContainer,Bottom,line);
+                nsBasic: NoteObject[GetNoteCount]:= TnoCGP_Header.Create(GetContainer,Bottom,line);
+              end;
+          end;
+        noSubheader:
+          begin
+            line:= RightStr(line,length(line)-length(SUBHEADER_PREFIX));
+            with notebooks[BookID].Notebook.Page[PageID] do
+              case StrToStyle(pageStyle) of
+                nsCGP: NoteObject[GetNoteCount]:= TnoCGP_Subheader.Create(GetContainer,Bottom,line);
+                nsBasic: NoteObject[GetNoteCount]:= TnoCGP_Subheader.Create(GetContainer,Bottom,line);
+              end;
+
+          end;
+        noKeyphrase:
+          begin
+            line:= RightStr(line,length(line)-length(KEYPHRASE_PREFIX));
+            with notebooks[BookID].Notebook.Page[PageID] do
+              case StrToStyle(pageStyle) of
+                nsCGP: NoteObject[GetNoteCount]:= TnoCGP_Keyphrase.Create(GetContainer,Bottom,line,clWashedPink);
+                nsBasic: NoteObject[GetNoteCount]:= TnoCGP_Keyphrase.Create(GetContainer,Bottom,line,clWashedPink);
+              end;
+
+          end;
+        noImage:
+          begin
+            line:= RightStr(line,length(line)-length(IMAGE_PREFIX));
+            tempPath:= LeftStr(line,Pos('[',line)-1);
+            tempWidth:= strtoint(MidStr(line,length(tempPath)+2,Pos(',',line)-(length(tempPath)+2)));
+            tempHeight:= strtoint(MidStr(line,Pos(',',line)+1,length(line)-Pos(',',line)-1));
+            with notebooks[BookID].Notebook.Page[PageID] do
+              NoteObject[GetNoteCount]:= TnoImage.Create(GetContainer,Bottom,tempPath,tempWidth,tempHeight);
+          end;
+        noText:
+          begin
+            with notebooks[BookID].Notebook.Page[PageID] do
+              NoteObject[GetNoteCount]:= TnoBasic_Textbox.Create(GetContainer,Bottom,line);
+          end;
+      end;
+
+
+
+      {case tempNoteObj of
+        noHeader://CGP
           begin
             readln(txt,tempStr); // header text
             if not (tempStr = '') then
               with notebooks[BookID].Notebook.Page[PageID] do
                 NoteObject[GetNoteCount]:= TnoCGP_Header.Create(GetContainer,Bottom,tempStr);
           end;
-        noCGP_Subheader:
+        noSubheader: //CGP
           begin
             readln(txt,tempStr); // subheader text
             if not (tempStr = '') then
               with notebooks[BookID].Notebook.Page[PageID] do
                 NoteObject[GetNoteCount]:= TnoCGP_Subheader.Create(GetContainer,Bottom,tempStr);
           end;
-        noCGP_Keyphrase:
+        noKeyphrase:
           begin
             readln(txt,tempStr); // subheader text
             if not (tempStr = '') then
@@ -98,8 +157,7 @@ begin
             with notebooks[BookID].Notebook.Page[PageID] do
               NoteObject[GetNoteCount]:= TnoBasic_Textbox.Create(GetContainer,Bottom,tempAnsiStr);
           end;
-      end;
-      readln(txt,tempStr); // linebreak
+      end;     }
       with notebooks[BookID].Notebook.Page[PageID] do
         if Bottom > Panel.Height then
           Panel.Height:= Bottom + 8;

@@ -8,26 +8,33 @@ uses
   Classes, SysUtils, Controls, ExtCtrls, StdCtrls, Graphics, Math;
 
 type
-  TNoteObjects = (noCGP_Header,
-                  noCGP_Subheader,
-                  noCGP_TextBox,
-                  noCGP_Keyphrase,
-                  noBasic_Header,
-                  noBasic_Image,
-                  noBasic_TextBox);
+  TNoteObjects = (noHeader,
+                  noSubheader,
+                  noText,
+                  noKeyphrase,
+                  noImage);
+  TNoteStyle = (nsCGP,
+                nsBasic);
 
 const
   StrNoteObjects : array [TNoteObjects] of string[16]
-    = ('CGP Header',
-       'CGP Subheader',
-       'CGP Textbox',
-       'CGP Keyphrase',
-       'Basic Header',
-       'Basic Image',
-       'Basic Textbox');
+    = ('Header',
+       'Subheader',
+       'Text',
+       'Keyphrase',
+       'Image');
+  StrNoteStyles : array [TNoteStyle] of string[8]
+    = ('CGP',
+       'Basic');
 
   OBJECT_COUNT = 5;
   OBJECT_BUFFER = 12;
+
+  HEADER_PREFIX = '#';
+  SUBHEADER_PREFIX = '##';
+  TEXT_PREFIX = '';
+  KEYPHRASE_PREFIX = '**';
+  IMAGE_PREFIX = '~';
 
   clCGPHeader = $00884A4F;
   clCGPSubheader = $00B4CBA8;
@@ -72,7 +79,7 @@ type
       constructor Create(Cont: TWinControl; var Pos: integer; Str: ansistring);
   end;
 
-  TnoBasic_Image = class(TNoteObject)
+  TnoImage = class(TNoteObject)
     private
       Image: TImage;
     public
@@ -80,6 +87,7 @@ type
   end;
 
 function StrToNote(StrNote: string): TNoteObjects;
+function StrToStyle(StrStyle: string): TNoteStyle;
 
 implementation
 
@@ -90,9 +98,18 @@ function StrToNote(StrNote: string): TNoteObjects;
 var
   i: TNoteObjects;
 begin
-  for i:= noCGP_Header to noBasic_TextBox do
+  for i:= noHeader to noImage do
     if StrNote = StrNoteObjects[i] then
       StrToNote:= i;
+end;
+
+function StrToStyle(StrStyle: string): TNoteStyle;
+var
+  i: TNoteStyle;
+begin
+  for i:= nsCGP to nsBasic do
+    if StrStyle = StrNoteStyles[i] then
+      StrToStyle:= i;
 end;
 
 destructor TNoteObject.Destroy;
@@ -100,7 +117,7 @@ begin
   Panel.Destroy;
 end;
 
-constructor TnoBasic_Image.Create(Cont: TWinControl; var Pos: integer; Path: string; ImgWidth, ImgHeight: integer);
+constructor TnoImage.Create(Cont: TWinControl; var Pos: integer; Path: string; ImgWidth, ImgHeight: integer);
 begin
   Container:= Cont;
   Panel:= TPanel.Create(nil);

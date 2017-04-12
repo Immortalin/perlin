@@ -27,9 +27,9 @@ type
 
 var
   frmDialogPage: TfrmDialogPage;
-  notebookLbl, titleLbl, descLbl, typeLbl, paramLbl: TLabel;
+  notebookLbl, titleLbl, descLbl, typeLbl, paramLbl, styleLbl: TLabel;
   titleEdit: TEdit;
-  notebookCombo: TCombobox;
+  notebookCombo, styleCombo: TCombobox;
   descMemo, scriptMemo: TMemo;
   typeSelect: TListBox;
   okImg: TImage;
@@ -49,18 +49,22 @@ uses
 
 procedure TfrmDialogPage.CreatePageClick(Sender: TObject);
 var
-  parentNotebook, pageName, description, filename: string;
+  parentNotebook, pageName, description, filename, style: string;
   txt: TextFile;
   i: integer;
 begin
+  // assigning variables
   pageName:= titleEdit.Text;
   parentNotebook:= notebookCombo.Text;
   description:= descMemo.Text;
   filename:= lowercase(concat('notes/',parentNotebook,'_',pageName,'.perlin'));
+  style:= styleCombo.Text;
+  // file creation
   AssignFile(txt,filename);
   Rewrite(txt);
   writeln(txt,pageName);
   writeln(txt,description);
+  writeln(txt,style);
   with scriptMemo do
     for i:= 0 to Lines.Count do
       writeln(txt,Lines[i]);
@@ -107,7 +111,7 @@ begin
   TypeList:= Sender as TListBox;
   with TypeList do
     begin
-      for StrObj:= noCGP_Header to noBasic_TextBox do
+      for StrObj:= noHeader to noImage do
         if StrNoteObjects[StrObj] = Items[ItemIndex] then
           ParameterOptionsPanel.Setup(StrObj);
       parameterPanel.Caption:= Items[ItemIndex];
@@ -117,6 +121,7 @@ end;
 procedure TfrmDialogPage.FormCreate(Sender: TObject);
 var
   StrObj: TNoteObjects;
+  StrStyle: TNoteStyle;
 begin
   with frmDialogPage do
     begin
@@ -133,7 +138,7 @@ begin
     begin
       Parent:= frmDialogPage;
       Left:= 8;
-      Top:= 174;
+      Top:= 206;
       Caption:= 'Objects:';
       Width:= Canvas.TextWidth(Caption);
     end;
@@ -142,15 +147,15 @@ begin
     begin
       Parent:= frmDialogPage;
       Left:= 8;
-      Top:= 198;
-      Height:= 240;
+      Top:= 230;
+      Height:= 208;
       Width:= (frmDialogPage.Width div 2)-16;
       {
         IF ELEMENTS ARE ADDED TO TNoteObjects
         CHANGE THE BOUND:     noBasic_TextBox
         TO THE FINAL ELEMENT, AND UPDATE IN THIS COMMENT
       }
-      for StrObj:= noCGP_Header to noBasic_TextBox do
+      for StrObj:= noHeader to noImage do
         AddItem(StrNoteObjects[StrObj],nil);
       OnClick:= @TypeClick;
     end;
@@ -222,7 +227,25 @@ begin
       Width:= titleEdit.Width;
       Left:= titleEdit.Left;
       Top:= 72;
-      Height:= 100;
+      Height:= 91;
+    end;
+  styleLbl:= TLabel.Create(nil);
+  with styleLbl do
+    begin
+      Parent:= frmDialogPage;
+      Caption:= 'Style:';
+      Top:= 174;
+      Left:= 8;
+    end;
+  styleCombo:= TCombobox.Create(nil);
+  with styleCombo do
+    begin
+      Parent:= frmDialogPage;
+      Width:= titleEdit.Width;
+      Left:= titleEdit.Left;
+      Top:= 172;
+      for StrStyle:= nsCGP to nsBasic do
+        AddItem(StrNoteStyles[StrStyle],nil);
     end;
   scriptMemo:= TMemo.Create(nil);
   with scriptMemo do

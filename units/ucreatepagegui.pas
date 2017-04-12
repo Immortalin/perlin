@@ -31,40 +31,19 @@ procedure TParameterOptionsPanel.AddScript(Sender: TObject);
 begin
   with ScriptOut.Lines do
     begin
-      Add(StrNoteObjects[ObjectToBeCreated]);
       case ObjectToBeCreated of
-        noCGP_Header:
-          begin
-            Add(lineInput_1.Text);
-          end;
-        noCGP_Subheader:
-          begin
-            Add(lineInput_1.Text);
-          end;
-        noCGP_Keyphrase:
-          begin
-            Add(lineInput_1.Text);
-          end;
-        noCGP_TextBox:
-          begin
-            Add(editBox_1.Text);
-          end;
-        noBasic_Header:
-          begin
-            Add(lineInput_1.Text);
-          end;
-        noBasic_Image:
-          begin
-            Add(lineInput_1.Text);
-            Add(lineInput_2.Text);
-            Add(lineInput_3.Text);
-          end;
-        noBasic_TextBox:
-          begin
-            Add(editBox_1.Text);
-          end;
+        noHeader:
+          Add(concat(HEADER_PREFIX,lineInput_1.Text));
+        noSubheader:
+          Add(concat(SUBHEADER_PREFIX,lineInput_1.Text));
+        noText:
+          Add(concat(TEXT_PREFIX,editBox_1.Text));
+        noKeyphrase:
+          Add(concat(KEYPHRASE_PREFIX,lineInput_1.Text));
+        noImage:
+          Add(concat(IMAGE_PREFIX,lineInput_1.Text,
+              '[',lineInput_2.Text,',',lineInput_3.Text,']'));
       end;
-      Add('↵');
     end;
   lineInput_1.Text:= '';
   lineInput_2.Text:= '';
@@ -76,7 +55,7 @@ procedure TParameterOptionsPanel.Setup(NoteObject: TNoteObjects);
 begin
   //
   ObjectToBeCreated:= NoteObject;
-  // hide all objects
+  // hide all input fields
   lineInput_1.Hide;
   lineInput_2.Hide;
   lineInput_3.Hide;
@@ -85,9 +64,9 @@ begin
   parameterLbl_3.Hide;
   editBox_1.Hide;
   addScriptImg.Hide;
-  // show according to noteobject
+  // show required input fields
   case NoteObject of
-    noCGP_Header:
+    noHeader:
       begin
         lineInput_1.Show;
         with parameterLbl_1 do
@@ -97,7 +76,7 @@ begin
             Top:= lineInput_1.Top+2;
           end;
       end;
-    noCGP_Subheader:
+    noSubheader:
       begin
         lineInput_1.Show;
         with parameterLbl_1 do
@@ -107,17 +86,7 @@ begin
             Top:= lineInput_1.Top+2;
           end;
       end;
-    noCGP_Keyphrase:
-      begin
-        lineInput_1.Show;
-        with parameterLbl_1 do
-          begin
-            Show;
-            Caption:= 'Keyphrase:';
-            Top:= lineInput_1.Top+2;
-          end;
-      end;
-    noCGP_TextBox:
+    noText:
       begin
         editBox_1.Show;
         with parameterLbl_1 do
@@ -127,17 +96,17 @@ begin
             Top:= lineInput_1.Top+2;
           end;
       end;
-    noBasic_Header:
+    noKeyphrase:
       begin
         lineInput_1.Show;
         with parameterLbl_1 do
           begin
             Show;
-            Caption:= 'Header:';
+            Caption:= 'Keyphrase:';
             Top:= lineInput_1.Top+2;
           end;
       end;
-    noBasic_Image:
+    noImage:
       begin
         lineInput_1.Show;
         lineInput_2.Show;
@@ -160,30 +129,22 @@ begin
             Caption:= 'Height:';
             Top:= lineInput_3.Top+2;
           end;
-
-      end;
-    noBasic_TextBox:
-      begin
-        editBox_1.Show;
-        with parameterLbl_1 do
-          begin
-            Show;
-            Caption:= 'Text:';
-            Top:= lineInput_1.Top+2;
-          end;
       end;
   end;
   addScriptImg.Show;
 end;
 
 constructor TParameterOptionsPanel.Create(Container: TWinControl; TextOut: TMemo);
+var
+  FieldWidth: integer;
 begin
   ScriptOut:= TextOut;
+  fieldWidth:= Container.Width-(96+24);
   lineInput_1:= TEdit.Create(nil);
   with lineInput_1 do
     begin
       Parent:= Container;
-      Width:= 160;
+      Width:= fieldWidth;
       Left:= 96;
       Top:= 16;
       Visible:= False;
@@ -192,7 +153,7 @@ begin
   with lineInput_2 do
     begin
       Parent:= Container;
-      Width:= 160;
+      Width:= fieldWidth;
       Left:= 96;
       Top:= 24+Height;
       Visible:= False;
@@ -201,7 +162,7 @@ begin
   with lineInput_3 do
     begin
       Parent:= Container;
-      Width:= 160;
+      Width:= fieldWidth;
       Left:= 96;
       Top:= 32+(Height*2);
       Visible:= False;
@@ -210,7 +171,7 @@ begin
   with editBox_1 do
     begin
       Parent:= Container;
-      Width:= 160;
+      Width:= fieldWidth;
       Left:= 96;
       Top:= 16;
       Visible:= False;
