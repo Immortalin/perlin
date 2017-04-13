@@ -10,6 +10,7 @@ uses
 type
   TNoteObjects = (noHeader,
                   noSubheader,
+                  noChapterheader,
                   noText,
                   noKeyphrase,
                   noImage);
@@ -20,8 +21,9 @@ const
   StrNoteObjects : array [TNoteObjects] of string[16]
     = ('Header',
        'Subheader',
+       'Chapter-header',
        'Text',
-       'Keyphrase',
+       'Key-phrase',
        'Image');
   StrNoteStyles : array [TNoteStyle] of string[8]
     = ('CGP',
@@ -30,6 +32,7 @@ const
   OBJECT_COUNT = 5;
   OBJECT_BUFFER = 12;
 
+  CHAPTERHEADER_PREFIX = '%';
   HEADER_PREFIX = '#';
   SUBHEADER_PREFIX = '##';
   TEXT_PREFIX = '';
@@ -70,6 +73,13 @@ type
       Text: TLabel;
     public
       constructor Create(Cont: TWinControl; var Pos: integer; Str: string; Clr: TColor);
+  end;
+
+  TnoCGP_Chapterheader = class(TNoteObject)
+    private
+      Text: TLabel;
+    public
+      constructor Create(Cont: TWinControl; var Pos: integer; Str: ansistring);
   end;
 
   TnoBasic_Textbox = class(TNoteObject)
@@ -287,7 +297,39 @@ begin
   Panel.Width:= Text.Width+(2*Text.Left);
   Panel.Left:= (notebookCurrentWidth-Panel.Width) div 2;
   Pos:= Pos+Panel.Height+OBJECT_BUFFER;
+end;
 
+constructor TnoCGP_Chapterheader.Create(Cont: TWinControl; var Pos: integer; Str: string);
+begin
+  Container:= Cont;
+  Panel:= TPanel.Create(nil);
+  with Panel do
+    begin
+      Parent:= Cont;
+      Width:= notebookCurrentWidth div 3;
+      Height:= 24; // VARIES BETWEEN OBJECTS
+      Top:= Pos;
+      BevelWidth:= 0;
+      Color:= clWhite;
+    end;
+  Text:= TLabel.Create(nil);
+  with Text do
+    begin
+      Parent:= Panel;
+      Caption:= Str;
+      Font.Color:= clBlack;
+      Font.Size:= 13;
+      Font.Style:= [fsItalic];
+      AutoSize:= False;
+      Width:= Canvas.TextWidth(Str);
+      Left:= (Panel.Height-Height);
+      Height:= Panel.Height;
+      Layout:= tlCenter;
+      Alignment:= taCenter;
+    end;
+  Panel.Width:= Text.Width+(2*Text.Left);
+  Panel.Left:= (notebookCurrentWidth-Panel.Width) div 2;
+  Pos:= Pos+Panel.Height;
 end;
 
 end.

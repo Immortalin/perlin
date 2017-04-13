@@ -40,6 +40,8 @@ begin
           Add(concat(TEXT_PREFIX,editBox_1.Text));
         noKeyphrase:
           Add(concat(KEYPHRASE_PREFIX,lineInput_1.Text));
+        noChapterheader:
+          Add(concat(CHAPTERHEADER_PREFIX,lineInput_1.Text));
         noImage:
           Add(concat(IMAGE_PREFIX,lineInput_1.Text,
               '[',lineInput_2.Text,',',lineInput_3.Text,']'));
@@ -103,6 +105,16 @@ begin
           begin
             Show;
             Caption:= 'Keyphrase:';
+            Top:= lineInput_1.Top+2;
+          end;
+      end;
+    noChapterheader:
+      begin
+        lineInput_1.Show;
+        with parameterLbl_1 do
+          begin
+            Show;
+            Caption:= 'Chapter-header:';
             Top:= lineInput_1.Top+2;
           end;
       end;

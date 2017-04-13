@@ -57,6 +57,8 @@ begin
         lineObject:= noSubheader
       else if LeftStr(line,length(HEADER_PREFIX)) = HEADER_PREFIX then
         lineObject:= noHeader
+      else if LeftStr(line,length(CHAPTERHEADER_PREFIX)) = CHAPTERHEADER_PREFIX then
+        lineObject:= noChapterheader
       else if LeftStr(line,length(KEYPHRASE_PREFIX)) = KEYPHRASE_PREFIX then
         lineObject:= noKeyphrase
       else if LeftStr(line,length(IMAGE_PREFIX)) = IMAGE_PREFIX then
@@ -92,6 +94,15 @@ begin
                 nsBasic: NoteObject[GetNoteCount]:= TnoCGP_Keyphrase.Create(GetContainer,Bottom,line,clWashedPink);
               end;
 
+          end;
+        noChapterheader:
+          begin
+            line:= RightStr(line,length(line)-length(CHAPTERHEADER_PREFIX));
+            with notebooks[BookID].Notebook.Page[PageID] do
+              case StrToStyle(pageStyle) of
+                nsCGP: NoteObject[GetNoteCount]:= TnoCGP_Chapterheader.Create(GetContainer,Bottom,line);
+                nsBasic: NoteObject[GetNoteCount]:= TnoCGP_Chapterheader.Create(GetContainer,Bottom,line);
+              end;
           end;
         noImage:
           begin
