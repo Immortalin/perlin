@@ -8,9 +8,8 @@
       <Unit0>
         <Filename Value="prjPerlin.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="1"/>
         <CursorPos Y="25"/>
-        <UsageCount Value="121"/>
+        <UsageCount Value="124"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -19,18 +18,18 @@
         <ComponentName Value="frmDash"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UsageCount Value="121"/>
+        <UsageCount Value="124"/>
       </Unit1>
       <Unit2>
         <Filename Value="uGUI.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="121"/>
+        <UsageCount Value="124"/>
       </Unit2>
       <Unit3>
         <Filename Value="unotebook.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uNotebook"/>
-        <UsageCount Value="121"/>
+        <UsageCount Value="124"/>
       </Unit3>
       <Unit4>
         <Filename Value="ufrmdialog.pas"/>
@@ -39,13 +38,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uFrmDialog"/>
-        <UsageCount Value="121"/>
+        <UsageCount Value="124"/>
       </Unit4>
       <Unit5>
         <Filename Value="udialog.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uDialog"/>
-        <UsageCount Value="121"/>
+        <UsageCount Value="124"/>
       </Unit5>
       <Unit6>
         <Filename Value="ufrmdialognotebook.pas"/>
@@ -54,7 +53,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uFrmDialogNotebook"/>
-        <UsageCount Value="121"/>
+        <UsageCount Value="124"/>
       </Unit6>
       <Unit7>
         <Filename Value="ufrmdialoglink.pas"/>
@@ -63,7 +62,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uFrmDialogLink"/>
-        <UsageCount Value="121"/>
+        <UsageCount Value="124"/>
       </Unit7>
       <Unit8>
         <Filename Value="ufrmdialogpage.pas"/>
@@ -72,32 +71,32 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uFrmDialogPage"/>
-        <UsageCount Value="121"/>
+        <UsageCount Value="124"/>
       </Unit8>
       <Unit9>
         <Filename Value="unoteobjects.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uNoteObjects"/>
-        <UsageCount Value="121"/>
+        <UsageCount Value="124"/>
       </Unit9>
       <Unit10>
         <Filename Value="uloadnotes.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uLoadNotes"/>
-        <UsageCount Value="121"/>
+        <UsageCount Value="124"/>
       </Unit10>
       <Unit11>
         <Filename Value="ucreatepagegui.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uCreatePageGUI"/>
-        <UsageCount Value="121"/>
+        <UsageCount Value="124"/>
       </Unit11>
       <Unit12>
         <Filename Value="units\upagefromtxt.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uPageFromTXT"/>
-        <EditorIndex Value="3"/>
-        <UsageCount Value="121"/>
+        <EditorIndex Value="1"/>
+        <UsageCount Value="124"/>
         <Loaded Value="True"/>
       </Unit12>
       <Unit13>
@@ -106,88 +105,88 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uFrmDialogNotebook"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="5"/>
         <TopLine Value="131"/>
         <CursorPos Y="4"/>
-        <UsageCount Value="59"/>
+        <UsageCount Value="60"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit13>
       <Unit14>
         <Filename Value="units\unotebook.pas"/>
         <UnitName Value="uNotebook"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="9"/>
         <CursorPos X="55" Y="64"/>
-        <UsageCount Value="60"/>
+        <UsageCount Value="61"/>
         <Loaded Value="True"/>
       </Unit14>
       <Unit15>
         <Filename Value="units\uGUI.pas"/>
-        <EditorIndex Value="11"/>
-        <TopLine Value="449"/>
+        <EditorIndex Value="10"/>
+        <TopLine Value="801"/>
         <CursorPos X="53" Y="258"/>
-        <UsageCount Value="60"/>
+        <UsageCount Value="61"/>
         <Loaded Value="True"/>
       </Unit15>
       <Unit16>
         <Filename Value="units\ufrmdialogpage.pas"/>
         <UnitName Value="uFrmDialogPage"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="3"/>
         <TopLine Value="62"/>
         <CursorPos X="22" Y="87"/>
-        <UsageCount Value="59"/>
+        <UsageCount Value="60"/>
         <Loaded Value="True"/>
       </Unit16>
       <Unit17>
         <Filename Value="units\ucreatepagegui.pas"/>
         <UnitName Value="uCreatePageGUI"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="4"/>
-        <TopLine Value="24"/>
-        <CursorPos X="27" Y="44"/>
-        <FoldState Value=" T0iQ6801111[44d"/>
-        <UsageCount Value="59"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="61"/>
+        <CursorPos X="44" Y="104"/>
+        <FoldState Value=" T0iS68011113]4/"/>
+        <UsageCount Value="60"/>
         <Loaded Value="True"/>
       </Unit17>
       <Unit18>
         <Filename Value="units\unoteobjects.pas"/>
         <UnitName Value="uNoteObjects"/>
-        <EditorIndex Value="5"/>
-        <TopLine Value="98"/>
-        <CursorPos X="32" Y="111"/>
-        <UsageCount Value="59"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="8"/>
+        <TopLine Value="297"/>
+        <CursorPos X="52" Y="311"/>
+        <UsageCount Value="60"/>
         <Loaded Value="True"/>
       </Unit18>
       <Unit19>
         <Filename Value="units\uloadnotes.pas"/>
         <UnitName Value="uLoadNotes"/>
-        <EditorIndex Value="9"/>
-        <TopLine Value="91"/>
-        <CursorPos X="45" Y="103"/>
-        <UsageCount Value="59"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="84"/>
+        <CursorPos X="86" Y="98"/>
+        <UsageCount Value="60"/>
         <Loaded Value="True"/>
       </Unit19>
       <Unit20>
         <Filename Value="units\uFrmDash.pas"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="9"/>
+        <TopLine Value="76"/>
         <CursorPos X="62" Y="85"/>
-        <UsageCount Value="60"/>
+        <UsageCount Value="61"/>
         <Loaded Value="True"/>
       </Unit20>
       <Unit21>
         <Filename Value="units\ufrmdialoglink.pas"/>
         <UnitName Value="uFrmDialogLink"/>
-        <EditorIndex Value="7"/>
-        <UsageCount Value="59"/>
+        <EditorIndex Value="4"/>
+        <UsageCount Value="60"/>
         <Loaded Value="True"/>
       </Unit21>
       <Unit22>
         <Filename Value="C:\lazarus\fpc\3.0.0\source\rtl\inc\objpash.inc"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="173"/>
         <CursorPos X="23" Y="193"/>
         <UsageCount Value="31"/>
-        <Loaded Value="True"/>
       </Unit22>
       <Unit23>
         <Filename Value="C:\lazarus\lcl\forms.pp"/>
@@ -198,123 +197,123 @@
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="prjPerlin.pas"/>
-        <Caret Line="9" Column="61"/>
-      </Position1>
-      <Position2>
-        <Filename Value="prjPerlin.pas"/>
-        <Caret Line="12" Column="68"/>
-      </Position2>
-      <Position3>
-        <Filename Value="units\uloadnotes.pas"/>
-        <Caret Line="142" Column="61" TopLine="97"/>
-      </Position3>
-      <Position4>
-        <Filename Value="units\uGUI.pas"/>
-        <Caret Line="522" Column="22" TopLine="490"/>
-      </Position4>
-      <Position5>
         <Filename Value="units\uGUI.pas"/>
         <Caret Line="449" Column="21" TopLine="429"/>
+      </Position1>
+      <Position2>
+        <Filename Value="units\unotebook.pas"/>
+        <Caret Line="164" Column="49" TopLine="152"/>
+      </Position2>
+      <Position3>
+        <Filename Value="units\unotebook.pas"/>
+        <Caret Line="30" Column="21" TopLine="10"/>
+      </Position3>
+      <Position4>
+        <Filename Value="units\unotebook.pas"/>
+        <Caret Line="52" Column="21" TopLine="20"/>
+      </Position4>
+      <Position5>
+        <Filename Value="units\unotebook.pas"/>
+        <Caret Line="116" Column="19" TopLine="84"/>
       </Position5>
       <Position6>
         <Filename Value="units\unotebook.pas"/>
-        <Caret Line="164" Column="49" TopLine="152"/>
+        <Caret Line="137" Column="21" TopLine="105"/>
       </Position6>
       <Position7>
         <Filename Value="units\unotebook.pas"/>
-        <Caret Line="30" Column="21" TopLine="10"/>
+        <Caret Line="167" Column="25" TopLine="135"/>
       </Position7>
       <Position8>
         <Filename Value="units\unotebook.pas"/>
-        <Caret Line="52" Column="21" TopLine="20"/>
+        <Caret Line="134" Column="16" TopLine="114"/>
       </Position8>
       <Position9>
         <Filename Value="units\unotebook.pas"/>
-        <Caret Line="116" Column="19" TopLine="84"/>
+        <Caret Line="139" Column="16" TopLine="114"/>
       </Position9>
       <Position10>
         <Filename Value="units\unotebook.pas"/>
-        <Caret Line="137" Column="21" TopLine="105"/>
+        <Caret Line="162" Column="14" TopLine="130"/>
       </Position10>
       <Position11>
         <Filename Value="units\unotebook.pas"/>
-        <Caret Line="167" Column="25" TopLine="135"/>
+        <Caret Line="169" Column="16" TopLine="137"/>
       </Position11>
       <Position12>
         <Filename Value="units\unotebook.pas"/>
-        <Caret Line="134" Column="16" TopLine="114"/>
+        <Caret Line="174" Column="16" TopLine="142"/>
       </Position12>
       <Position13>
-        <Filename Value="units\unotebook.pas"/>
-        <Caret Line="139" Column="16" TopLine="114"/>
-      </Position13>
-      <Position14>
-        <Filename Value="units\unotebook.pas"/>
-        <Caret Line="162" Column="14" TopLine="130"/>
-      </Position14>
-      <Position15>
-        <Filename Value="units\unotebook.pas"/>
-        <Caret Line="169" Column="16" TopLine="137"/>
-      </Position15>
-      <Position16>
-        <Filename Value="units\unotebook.pas"/>
-        <Caret Line="174" Column="16" TopLine="142"/>
-      </Position16>
-      <Position17>
         <Filename Value="units\uloadnotes.pas"/>
         <Caret Line="144" Column="28" TopLine="113"/>
-      </Position17>
-      <Position18>
+      </Position13>
+      <Position14>
         <Filename Value="units\uloadnotes.pas"/>
         <Caret Line="135" Column="73"/>
-      </Position18>
-      <Position19>
+      </Position14>
+      <Position15>
         <Filename Value="units\unoteobjects.pas"/>
         <Caret Line="26" Column="20" TopLine="6"/>
-      </Position19>
-      <Position20>
+      </Position15>
+      <Position16>
         <Filename Value="units\unoteobjects.pas"/>
         <Caret Line="14" Column="31" TopLine="10"/>
-      </Position20>
-      <Position21>
+      </Position16>
+      <Position17>
         <Filename Value="units\ucreatepagegui.pas"/>
-      </Position21>
-      <Position22>
+      </Position17>
+      <Position18>
         <Filename Value="units\ucreatepagegui.pas"/>
         <Caret Line="66" Column="13" TopLine="57"/>
-      </Position22>
-      <Position23>
+      </Position18>
+      <Position19>
         <Filename Value="units\ufrmdialogpage.pas"/>
         <Caret Line="153" Column="39" TopLine="138"/>
-      </Position23>
-      <Position24>
+      </Position19>
+      <Position20>
         <Filename Value="prjPerlin.pas"/>
         <Caret Line="14" Column="49"/>
-      </Position24>
-      <Position25>
+      </Position20>
+      <Position21>
         <Filename Value="units\ufrmdialogpage.pas"/>
         <Caret Line="230" Column="20" TopLine="216"/>
-      </Position25>
-      <Position26>
-        <Filename Value="units\uGUI.pas"/>
-        <Caret Line="258" Column="53" TopLine="449"/>
-      </Position26>
-      <Position27>
+      </Position21>
+      <Position22>
         <Filename Value="units\ufrmdialogpage.pas"/>
         <Caret Line="244" Column="46" TopLine="233"/>
-      </Position27>
-      <Position28>
+      </Position22>
+      <Position23>
         <Filename Value="units\uloadnotes.pas"/>
         <Caret Line="107" TopLine="93"/>
-      </Position28>
-      <Position29>
+      </Position23>
+      <Position24>
         <Filename Value="units\uloadnotes.pas"/>
         <Caret Line="99" Column="52" TopLine="87"/>
+      </Position24>
+      <Position25>
+        <Filename Value="units\unoteobjects.pas"/>
+        <Caret Line="37" Column="20" TopLine="20"/>
+      </Position25>
+      <Position26>
+        <Filename Value="units\uloadnotes.pas"/>
+        <Caret Line="104" Column="69" TopLine="85"/>
+      </Position26>
+      <Position27>
+        <Filename Value="units\unoteobjects.pas"/>
+        <Caret Line="310" Column="52" TopLine="297"/>
+      </Position27>
+      <Position28>
+        <Filename Value="units\unoteobjects.pas"/>
+        <Caret Line="302" Column="33" TopLine="282"/>
+      </Position28>
+      <Position29>
+        <Filename Value="units\unoteobjects.pas"/>
+        <Caret Line="292" Column="59" TopLine="265"/>
       </Position29>
       <Position30>
         <Filename Value="units\unoteobjects.pas"/>
-        <Caret Line="37" Column="20" TopLine="20"/>
+        <Caret Line="79" Column="67" TopLine="71"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>
