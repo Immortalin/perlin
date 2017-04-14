@@ -13,14 +13,16 @@ How to download from GitHub
 Latest Release (1.1.0)
 -----
 The latest release supports dynamic creation of note objects. Currently, the note objects that Perlin offers are as follows:
-* CGP-Style Header
-* CGP-Style Subheader
-* CGP-Style Textbox
-* CGP-Style Keyphrase
-* Basic Header
-* Basic Subheader
-* Basic Image
-* Basic Textbox
+* Header
+* Subheader
+* Textbox
+* Keyphrase
+* Chapter header
+* Image
+
+All these objects are available in the multiple styles as follows:
+* CGP
+* Basic
 
 As we are early in development, this list is soon to be very extensive with _many_ themes and styles to choose from.
 
