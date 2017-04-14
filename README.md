@@ -6,14 +6,9 @@ Perlin is a desktop-application that can view and compile notes in a modular for
 
 How to download from GitHub
 -----
-1. Click 'Clone or download' from the GitHub page.
-2. You can delete all files except: 
-* Perlin.exe
-* Perlin.ico
-* /data/
-* /notes/ 
-3. You can create a shortcut to the Perlin.exe file on your desktop.
-4. Run!
+1. Go to the GitHub page.
+2. Click 'release' at the top of the GitHub page.
+3. Download the 'Perlin.zip' file.
 
 Latest Release (1.1.0)
 -----
