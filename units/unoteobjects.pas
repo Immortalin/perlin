@@ -130,6 +130,7 @@ end;
 constructor TnoImage.Create(Cont: TWinControl; var Pos: integer; Path: string; ImgWidth, ImgHeight: integer);
 begin
   Container:= Cont;
+  Pos:= Pos + 12;
   Panel:= TPanel.Create(nil);
   with Panel do
     begin
