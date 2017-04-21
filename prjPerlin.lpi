@@ -33,7 +33,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="13">
+    <Units Count="14">
       <Unit0>
         <Filename Value="prjPerlin.pas"/>
         <IsPartOfProject Value="True"/>
@@ -111,6 +111,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uPageFromTXT"/>
       </Unit12>
+      <Unit13>
+        <Filename Value="units\upanelcapture.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uPanelCapture"/>
+      </Unit13>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -133,7 +138,7 @@
     </Linking>
   </CompilerOptions>
   <Debugging>
-    <Exceptions Count="3">
+    <Exceptions Count="5">
       <Item1>
         <Name Value="EAbort"/>
       </Item1>
@@ -143,6 +148,12 @@
       <Item3>
         <Name Value="EFOpenError"/>
       </Item3>
+      <Item4>
+        <Name Value="RunError(2)"/>
+      </Item4>
+      <Item5>
+        <Name Value="EInOutError"/>
+      </Item5>
     </Exceptions>
   </Debugging>
 </CONFIG>
