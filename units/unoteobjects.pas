@@ -99,10 +99,12 @@ type
 function StrToNote(StrNote: string): TNoteObjects;
 function StrToStyle(StrStyle: string): TNoteStyle;
 
+
 implementation
 
 uses
-  Dialogs, uNotebook;
+  Dialogs, uNotebook, uPanelCapture,
+  LCLType, LCLIntf;
 
 function StrToNote(StrNote: string): TNoteObjects;
 var

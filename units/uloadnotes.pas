@@ -38,87 +38,95 @@ procedure LoadNotes(BookID, PageID: integer);
 var
   txt: textfile;
   line: ansistring;
-  tempPath: string;
+  tempPath, txtString: string;
   tempWidth,tempHeight: integer;
   pageName, pageDesc, pageStyle: string;
   lineObject: TNoteObjects;
 begin
-  AssignFile(txt,concat('notes/',notebooks[BookID].Notebook.GetName,'_',notebooks[BookID].Notebook.Page[PageID].GetName,'.perlin'));
-  Reset(txt);
-  readln(txt,pageName);
-  readln(txt,pageDesc);
-  readln(txt,pageStyle);
-  while not EOF(txt) do
+  txtString:= lowercase(concat('notes/',notebooks[BookID].Notebook.GetName,'_',notebooks[BookID].Notebook.Page[PageID].GetName,'.perlin'));
+  //ShowMessage(txtString);
+  //if not FileExists(txtString) then
+  //  ShowMessage(concat('Invalid Note "',notebooks[BookID].Notebook.Page[PageID].GetName,'"'))
+  //else
     begin
-      notebooks[BookID].Notebook.Page[PageID].IncNotes;
-      readln(txt,line); // load the line
-      // check subheader then header
-      if LeftStr(line,length(SUBHEADER_PREFIX)) = SUBHEADER_PREFIX then
-        lineObject:= noSubheader
-      else if LeftStr(line,length(HEADER_PREFIX)) = HEADER_PREFIX then
-        lineObject:= noHeader
-      else if LeftStr(line,length(CHAPTERHEADER_PREFIX)) = CHAPTERHEADER_PREFIX then
-        lineObject:= noChapterheader
-      else if LeftStr(line,length(KEYPHRASE_PREFIX)) = KEYPHRASE_PREFIX then
-        lineObject:= noKeyphrase
-      else if LeftStr(line,length(IMAGE_PREFIX)) = IMAGE_PREFIX then
-        lineObject:= noImage
-      else
-        lineObject:= noText;
-      case lineObject of
-        noHeader:
-          begin
-            line:= RightStr(line,length(line)-length(HEADER_PREFIX));
-            with notebooks[BookID].Notebook.Page[PageID] do
-              case StrToStyle(pageStyle) of
-                nsCGP: NoteObject[GetNoteCount]:= TnoCGP_Header.Create(GetContainer,Bottom,line);
-                nsBasic: NoteObject[GetNoteCount]:= TnoCGP_Header.Create(GetContainer,Bottom,line);
+      AssignFile(txt,txtString);
+      Reset(txt);
+      readln(txt,pageName);
+      readln(txt,pageDesc);
+      readln(txt,pageStyle);
+      //ShowMessage('A');
+      while not EOF(txt) do
+        begin
+          notebooks[BookID].Notebook.Page[PageID].IncNotes;
+          readln(txt,line); // load the line
+          // check subheader then header
+          if LeftStr(line,length(SUBHEADER_PREFIX)) = SUBHEADER_PREFIX then
+            lineObject:= noSubheader
+          else if LeftStr(line,length(HEADER_PREFIX)) = HEADER_PREFIX then
+            lineObject:= noHeader
+          else if LeftStr(line,length(CHAPTERHEADER_PREFIX)) = CHAPTERHEADER_PREFIX then
+            lineObject:= noChapterheader
+          else if LeftStr(line,length(KEYPHRASE_PREFIX)) = KEYPHRASE_PREFIX then
+            lineObject:= noKeyphrase
+          else if LeftStr(line,length(IMAGE_PREFIX)) = IMAGE_PREFIX then
+            lineObject:= noImage
+          else
+            lineObject:= noText;
+          case lineObject of
+            noHeader:
+              begin
+                line:= RightStr(line,length(line)-length(HEADER_PREFIX));
+                with notebooks[BookID].Notebook.Page[PageID] do
+                  case StrToStyle(pageStyle) of
+                    nsCGP: NoteObject[GetNoteCount]:= TnoCGP_Header.Create(GetContainer,Bottom,line);
+                    nsBasic: NoteObject[GetNoteCount]:= TnoCGP_Header.Create(GetContainer,Bottom,line);
+                  end;
               end;
-          end;
-        noSubheader:
-          begin
-            line:= RightStr(line,length(line)-length(SUBHEADER_PREFIX));
-            with notebooks[BookID].Notebook.Page[PageID] do
-              case StrToStyle(pageStyle) of
-                nsCGP: NoteObject[GetNoteCount]:= TnoCGP_Subheader.Create(GetContainer,Bottom,line);
-                nsBasic: NoteObject[GetNoteCount]:= TnoCGP_Subheader.Create(GetContainer,Bottom,line);
-              end;
+            noSubheader:
+              begin
+                line:= RightStr(line,length(line)-length(SUBHEADER_PREFIX));
+                with notebooks[BookID].Notebook.Page[PageID] do
+                  case StrToStyle(pageStyle) of
+                    nsCGP: NoteObject[GetNoteCount]:= TnoCGP_Subheader.Create(GetContainer,Bottom,line);
+                    nsBasic: NoteObject[GetNoteCount]:= TnoCGP_Subheader.Create(GetContainer,Bottom,line);
+                  end;
 
-          end;
-        noKeyphrase:
-          begin
-            line:= RightStr(line,length(line)-length(KEYPHRASE_PREFIX));
-            with notebooks[BookID].Notebook.Page[PageID] do
-              case StrToStyle(pageStyle) of
-                nsCGP: NoteObject[GetNoteCount]:= TnoCGP_Keyphrase.Create(GetContainer,Bottom,line,clWashedPink);
-                nsBasic: NoteObject[GetNoteCount]:= TnoCGP_Keyphrase.Create(GetContainer,Bottom,line,clWashedPink);
               end;
+            noKeyphrase:
+              begin
+                line:= RightStr(line,length(line)-length(KEYPHRASE_PREFIX));
+                with notebooks[BookID].Notebook.Page[PageID] do
+                  case StrToStyle(pageStyle) of
+                    nsCGP: NoteObject[GetNoteCount]:= TnoCGP_Keyphrase.Create(GetContainer,Bottom,line,clWashedPink);
+                    nsBasic: NoteObject[GetNoteCount]:= TnoCGP_Keyphrase.Create(GetContainer,Bottom,line,clWashedPink);
+                  end;
 
-          end;
-        noChapterheader:
-          begin
-            line:= RightStr(line,length(line)-length(CHAPTERHEADER_PREFIX));
-            with notebooks[BookID].Notebook.Page[PageID] do
-              case StrToStyle(pageStyle) of
-                nsCGP: NoteObject[GetNoteCount]:= TnoCGP_Chapterheader.Create(GetContainer,Bottom,line);
-                nsBasic: NoteObject[GetNoteCount]:= TnoCGP_Chapterheader.Create(GetContainer,Bottom,line);
+              end;
+            noChapterheader:
+              begin
+                line:= RightStr(line,length(line)-length(CHAPTERHEADER_PREFIX));
+                with notebooks[BookID].Notebook.Page[PageID] do
+                  case StrToStyle(pageStyle) of
+                    nsCGP: NoteObject[GetNoteCount]:= TnoCGP_Chapterheader.Create(GetContainer,Bottom,line);
+                    nsBasic: NoteObject[GetNoteCount]:= TnoCGP_Chapterheader.Create(GetContainer,Bottom,line);
+                  end;
+              end;
+            noImage:
+              begin
+                line:= RightStr(line,length(line)-length(IMAGE_PREFIX));
+                tempPath:= LeftStr(line,Pos('[',line)-1);
+                tempWidth:= strtoint(MidStr(line,length(tempPath)+2,Pos(',',line)-(length(tempPath)+2)));
+                tempHeight:= strtoint(MidStr(line,Pos(',',line)+1,length(line)-Pos(',',line)-1));
+                with notebooks[BookID].Notebook.Page[PageID] do
+                  NoteObject[GetNoteCount]:= TnoImage.Create(GetContainer,Bottom,tempPath,tempWidth,tempHeight);
+              end;
+            noText:
+              begin
+                with notebooks[BookID].Notebook.Page[PageID] do
+                  NoteObject[GetNoteCount]:= TnoBasic_Textbox.Create(GetContainer,Bottom,line);
               end;
           end;
-        noImage:
-          begin
-            line:= RightStr(line,length(line)-length(IMAGE_PREFIX));
-            tempPath:= LeftStr(line,Pos('[',line)-1);
-            tempWidth:= strtoint(MidStr(line,length(tempPath)+2,Pos(',',line)-(length(tempPath)+2)));
-            tempHeight:= strtoint(MidStr(line,Pos(',',line)+1,length(line)-Pos(',',line)-1));
-            with notebooks[BookID].Notebook.Page[PageID] do
-              NoteObject[GetNoteCount]:= TnoImage.Create(GetContainer,Bottom,tempPath,tempWidth,tempHeight);
-          end;
-        noText:
-          begin
-            with notebooks[BookID].Notebook.Page[PageID] do
-              NoteObject[GetNoteCount]:= TnoBasic_Textbox.Create(GetContainer,Bottom,line);
-          end;
-      end;
+    end;
 
 
 

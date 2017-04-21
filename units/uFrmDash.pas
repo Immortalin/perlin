@@ -17,12 +17,13 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormResize(Sender: TObject);
-    procedure ScrollChange(Sender: TObject);
   private
     { private declarations }
   public
     { public declarations }
   end;
+
+  function AnyPageVisible(book: TNotebook): boolean;
 
 const
   MAX_NOTEBOOKS = 16;
@@ -37,11 +38,11 @@ type
 
 var
   frmDash: TfrmDash;
+  //G
   sidebar: TSidebar;
   topbar: TTopbar;
   pagebar: TPagebar;
-  notebookPanel: TPanel;
-  notebookScrollbar: TScrollBar;
+  notebookPanel: TScrollBox;
   debugLbl: TLabel;
   notebookCount: integer;
   notebooks: array[1..MAX_NOTEBOOKS] of TNotebookRecord;
@@ -49,24 +50,23 @@ var
 implementation
 
 uses
-  uLoadNotes;
+  uLoadNotes, LCLIntf;
 
 
 {$R *.lfm}
 
 { TfrmDash }
 
-procedure TfrmDash.ScrollChange(Sender: TObject);
+function AnyPageVisible(book: TNotebook): boolean;
 var
-  scroll: TScrollbar;
-  book: integer;
+  AnyVisible: boolean;
+  pages: integer;
 begin
-  scroll:= Sender as TScrollBar;
-  for book:= 1 to notebookCount do
-    begin
-      with notebooks[book].Notebook.Panel do
-        Top:= round((notebookPanel.Height-Height)*(scroll.Position/100));
-    end;
+  AnyVisible:= False;
+    for pages:= 1 to book.GetPageCount do
+      if book.Page[pages].Panel.Visible then
+        AnyVisible:= True;
+  AnyPageVisible:= AnyVisible;
 end;
 
 procedure TfrmDash.FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -75,6 +75,7 @@ begin
 end;
 
 procedure TfrmDash.FormCreate(Sender: TObject);
+
 begin
   Randomize;
   notebookCount:= 0;
@@ -87,7 +88,7 @@ begin
       Height:= 640;
       Color:= clDefault;
     end;
-  notebookPanel:= TPanel.Create(frmDash);
+  notebookPanel:= TScrollbox.Create(frmDash);
   with notebookPanel do
     begin
       Parent:= frmDash;
@@ -95,21 +96,14 @@ begin
       Height:= frmDash.Height-TOPBAR_HEIGHT;
       Left:= SIDEBAR_WIDTH+PAGEBAR_WIDTH;
       Top:= TOPBAR_HEIGHT;
-      BevelWidth:= 0;
-      Visible:= False;
+      Visible:= True;
       Color:= clDefault;
-    end;
-  notebookScrollbar:= TScrollBar.Create(notebookPanel);
-  with notebookScrollbar do
-    begin
-      Parent:= notebookPanel;
-      Kind:= sbVertical;
-      Min:= 1;
-      Max:= 100;
-      Position:= 1;
-      Top:= 0;
-      Left:= notebookPanel.Width-Width;
-      OnChange:= @ScrollChange;
+      HorzScrollBar.Visible:= False;
+      VertScrollBar.Visible:= False;
+      VertScrollBar.Tracking:= True;
+      BorderStyle:= bsNone;
+     // OnMouseMove:= @ScrollChange;
+      //OnMouseWheel:= @ScrollChange;
     end;
   topbar:= TTopbar.Create(frmDash);
   sidebar:= TSidebar.Create(frmDash);
@@ -153,7 +147,7 @@ end;
 
 procedure TfrmDash.FormResize(Sender: TObject);
 begin
-  with frmDash do
+  {with frmDash do
     begin
       Width:= 1024;
       Height:= 640;
@@ -169,7 +163,7 @@ begin
       Top:= frmDash.Height-Height;
     end;
   with notebookScrollbar do
-    Height:= notebookPanel.Height;
+    Height:= notebookPanel.Height;  }
 end;
 
 end.

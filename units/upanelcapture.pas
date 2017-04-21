@@ -5,24 +5,27 @@ unit uPanelCapture;
 interface
 
 uses
-  Classes, SysUtils, Controls;
+  Classes, SysUtils, Controls, Graphics, LCLIntf, LCLType;
 
 procedure SaveContainerAsImage(Container: TWinControl; Path: string);
 
 implementation
 
 procedure SaveContainerAsImage(Container: TWinControl; Path: string);
+var
+  MyDC: HDC;
+  MyBitmap: TBitmap;
 begin
-  MyDC:= GetDC(notebookPanel.Handle);
+  MyDC:= GetDC(Container.Handle);
   MyBitmap:= TBitmap.Create;
   try
     MyBitmap.LoadFromDevice(MyDC);
-    MyBitmap.SaveToFile(concat('panel',inttostr(random(10000)),'.bmp'));
+    MyBitmap.SaveToFile(concat(path,'panel',inttostr(random(10000)),'.bmp'));
   finally
-    ReleaseDC(notebookPanel.Handle, MyDC);
+    ReleaseDC(Container.Handle, MyDC);
     FreeAndNil(MyBitmap);
   end;
-end
+end;
 
 end.
 

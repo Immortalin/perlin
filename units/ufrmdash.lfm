@@ -8,5 +8,5 @@ object frmDash: TfrmDash
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnResize = FormResize
-  LCLVersion = '1.6.2.0'
+  LCLVersion = '1.6.0.4'
 end

@@ -9,7 +9,7 @@ uses
   uNoteObjects;
 
 const
-  MAX_PAGES_PER_NOTEBOOK = 20;
+  MAX_PAGES_PER_NOTEBOOK = 24;
   MAX_OBJECTS_PER_PAGE = 50;
 
 type
@@ -59,7 +59,7 @@ var
 implementation
 
 uses
-  uFrmDash, Dialogs;
+  uFrmDash, Dialogs, uPanelCapture, CRT;
 
 function TNotebook.GetPageName(ID: integer): string;
 begin
@@ -116,7 +116,6 @@ begin
       Page[k].Hide
     else
       Page[k].Show;
-
 end;
 
 function TPage.GetName: string;
@@ -130,8 +129,21 @@ begin
 end;
 
 procedure TPage.Show;
+{var
+  temp1, temp2: integer; }
 begin
   Panel.Visible:= True;
+  // SCREENSHOT DEBUGGING
+  {Delay(1000);
+  temp1:= frmDash.Height;
+  temp2:= notebookPanel.Height;
+  uFrmDash.frmDash.ShowOnTop;
+  uFrmDash.frmDash.FormStyle:= fsSystemStayOnTop;
+  uFrmDash.frmDash.Height:= TOPBAR_HEIGHT+Panel.Height;
+  uFrmDash.notebookPanel.Height:= Panel.Height;
+  SaveContainerAsImage(Panel,'screenshots/');
+  //uFrmDash.frmDash.Height:= temp1;
+  //uFrmDash.notebookPanel.Height:= temp2;    }
 end;
 
 procedure TPage.Hide;

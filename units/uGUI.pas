@@ -62,20 +62,20 @@ type
     public
       constructor Create(Num: integer; Notebook: string; TagClr: TTagColor; HeaderTxt, SubTxt: string; Container: TWinControl);
       destructor Destroy;
+      procedure SetWidth(NewWidth: integer);
   end;
 
   TPagebar = class
     private protected
       ParentContainer: TWinControl;
       Preview: array[0..PAGEPREVIEW_MAX-1] of TPagePreview;
-      VertLine, barHeader: TShape;
-      noteLbl: TLabel;
-      PreviewPanel: TPanel;
-      Scrollbar: TScrollbar;
-      procedure ScrollChange(Sender: TObject);
+      VertLine: TShape;
+      procedure PlusClick(Sender: TObject);
     public
-      Panel: TPanel;
+      Panel: TScrollBox;
       PageCount: integer;
+      CircledPlus: TImage;
+      procedure SetPreviewWidths(NewWidth: integer);
       procedure Show(Filter: TPreviewFilter);
       procedure Clear;
       procedure FitToContainer;
@@ -152,11 +152,26 @@ implementation
 
 uses
   uFrmDialogNotebook, uFrmDialogPage, uFrmDialogLink, uFrmDash, uNotebook,
-  uLoadNotes;
+  uLoadNotes, uPanelCapture;
 
-procedure TPagebar.ScrollChange(Sender: TObject);
+procedure TPagebar.PlusClick(Sender: TObject);
 begin
-  //PreviewPanel.Top:= PAGEBAR_HEADER_HEIGHT+round(((Panel.Height-PAGEBAR_HEADER_HEIGHT)-PreviewPanel.Height)*(Scrollbar.Position/100));
+  frmDialogPage.ReloadNotebookCombo(Sender);
+  frmDialogPage.Show;
+end;
+
+procedure TPagePreview.SetWidth(NewWidth: integer);
+begin
+  Panel.Width:= NewWidth;
+end;
+
+procedure TPagebar.SetPreviewWidths(NewWidth: integer);
+var
+  k: integer;
+begin
+  for k:= 0 to PageCount do
+    Preview[k].SetWidth(NewWidth);
+  showmessage(inttostr(newWidth)); // debug
 end;
 
 destructor TPagePreview.Destroy;
@@ -243,21 +258,18 @@ end;
 procedure TPagePreview.MouseClick(Sender: TObject);
 var
   i, notebookID: integer;
-  //PagePreview: TPagePreview;
 begin
-  //PagePreview:= Sender as TPagePreview;
   for i:= 1 to notebookCount do
     if notebooks[i].Name = NotebookName then
       notebookID:= i;
   with notebooks[notebookID].Notebook do
     begin
-    //if notebooks[notebookID].Notebook.Panel.Visible then ShowMessage(NotebookName);
       for i:= 1 to GetPageCount do
         if HeaderText.Caption = GetPageName(i) then
           ShowPage(i);
     end;
-  notebookScrollbar.Position:= 1;
-  //
+  notebookPanel.VertScrollBar.Visible:= AnyPageVisible(notebooks[notebookID].Notebook);   ;
+  notebookPanel.VertScrollBar.Position:= 1;
 end;
 
 constructor TPagePreview.Create(Num: integer; Notebook: string; TagClr: TTagColor; HeaderTxt, SubTxt: string; Container: TWinControl);
@@ -269,7 +281,8 @@ begin
   with Panel do
     begin
       Parent:= Container;
-      Width:= PAGEBAR_WIDTH-(1+SCROLLBAR_WIDTH);
+      //Width:= PAGEBAR_WIDTH-(1+SCROLLBAR_WIDTH);
+      Width:= PAGEBAR_WIDTH-1;
       Height:= PAGEPREVIEW_HEIGHT;
       Top:= Num*PAGEPREVIEW_HEIGHT;
       BevelWidth:= 0;
@@ -356,9 +369,7 @@ end;
 procedure TPagebar.AddPage(NotebookName: string; TagClr: TTagColor; HeaderTxt, SubTxt: string);
 begin
   inc(PageCount);
-  Preview[PageCount]:= TPagePreview.Create(PageCount, NotebookName, TagClr, HeaderTxt, SubTxt, PreviewPanel);
-  if (PageCount * PAGEPREVIEW_HEIGHT) > PreviewPanel.Height then
-    PreviewPanel.Height:= (PageCount * PAGEPREVIEW_HEIGHT);
+  Preview[PageCount]:= TPagePreview.Create(PageCount, NotebookName, TagClr, HeaderTxt, SubTxt, Panel);
 end;
 
 procedure TPagebar.FitToContainer;
@@ -371,7 +382,7 @@ constructor TPagebar.Create(Container: TWinControl);
 begin
   ParentContainer:= Container;
   PageCount:= -1;
-  Panel:= TPanel.Create(nil);
+  Panel:= TScrollBox.Create(nil);
   with Panel do
     begin
       Parent:= ParentContainer;
@@ -379,32 +390,11 @@ begin
       Height:= ParentContainer.Height-TOPBAR_HEIGHT;
       Top:= TOPBAR_HEIGHT;
       Left:= SIDEBAR_WIDTH;
-      BevelWidth:= 0;
+      BorderStyle:= bsNone;
       Color:= clWhite;
-    end;
-  PreviewPanel:= TPanel.Create(nil);
-  with PreviewPanel do
-    begin
-      Parent:= Panel;
-      Width:= PAGEBAR_WIDTH-SCROLLBAR_WIDTH;
-      Height:= Panel.Height-PAGEBAR_HEADER_HEIGHT;
-      TOP:= PAGEBAR_HEADER_HEIGHT;
-      BevelWidth:= 0;
-      Color:= clWhite;
-    end;
-  Scrollbar:= TScrollBar.Create(notebookPanel);
-  with Scrollbar do
-    begin
-      Parent:= Panel;
-      Kind:= sbVertical;
-      Min:= 1;
-      Max:= 100;
-      Position:= 1;
-      Top:= 0;
-      Height:= Parent.Height-PAGEBAR_HEADER_HEIGHT;
-      Top:= PAGEBAR_HEADER_HEIGHT;
-      Left:= Panel.Width-Width;
-      OnChange:= @ScrollChange;
+      HorzScrollBar.Visible:= False;
+      VertScrollBar.Visible:= True;
+      VertScrollBar.Tracking:= True;
     end;
   VertLine:= TShape.Create(nil);
   with VertLine do
@@ -415,24 +405,21 @@ begin
       Height:= Parent.Height;
       Left:= Parent.Width-1;
     end;
-  barHeader:= TShape.Create(nil);
-  with barHeader do
+  CircledPlus:= TImage.Create(nil);
+  with CircledPlus do
     begin
       Parent:= Panel;
-      Top:= PAGEBAR_HEADER_HEIGHT-1;
-      Width:= PAGEBAR_WIDTH;
-      Height:= 1;
-      Pen.Color:= clBorderGrey;
-    end;
-  noteLbl:= TLabel.Create(nil);
-  with noteLbl do
-    begin
-      Parent:= Panel;
-      Font.Style:= [fsBold];
-      Font.Color:= clTextGrey;
-      Caption:= 'N o t e s';
-      Top:= (PAGEBAR_HEADER_HEIGHT - Height) div 2;
-      Left:= Top;
+      Width:= 64;
+      Height:= 64;
+      Left:= (Panel.Width-Width) div 2;
+      Top:= (Panel.Height-Height) div 2;
+      Stretch:= True;
+      Transparent:= True;
+      AntialiasingMode:= amOn;
+      Picture.LoadFromFile('data/circledPlus.png');
+      Cursor:= crHandPoint;
+      OnClick:= @PlusClick;
+      Visible:= False;
     end;
 end;
 
@@ -600,6 +587,23 @@ begin
           pagebar.Panel.Show;
           pagebar.Clear;
           LoadAllPreviews(notebooks[i].ID);
+          if pagebar.PageCount = -1 then
+            pagebar.CircledPlus.Show
+          else
+            pagebar.CircledPlus.Hide;
+          if ((pagebar.PageCount+1)*PAGEPREVIEW_HEIGHT) > pagebar.Panel.Height then
+            begin
+              pagebar.Panel.VertScrollBar.Visible:= True;
+            //  pagebar.SetPreviewWidths(PAGEBAR_WIDTH-(SCROLLBAR_WIDTH+1));
+            end
+          else
+            begin
+              pagebar.Panel.VertScrollBar.Visible:= False;
+            //  pagebar.SetPreviewWidths(PAGEBAR_WIDTH-1);
+            end;
+          //
+          notebookPanel.VertScrollBar.Visible:= AnyPageVisible(notebooks[i].Notebook);
+          notebookPanel.VertScrollBar.Position:= 1;
         end
       else
         notebooks[i].Notebook.Hide;
